@@ -39,7 +39,7 @@ elif choice == 'GOOG':
     vaid_choice = True
 else:
     print('No dataset found for that symbol. Make sure each letter is capitalized!')
-    choice = (input('the stock whose price you would like to predict: '))
+
 num_epochs = int(input('Please type the number of epochs: '))
 print(data.shape) 
 
