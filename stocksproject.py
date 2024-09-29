@@ -13,35 +13,33 @@ from datetime import datetime
 print('Symbols:\nSPY\nMETA\nAMZN\nAAPL\nNFLX\nGOOG\n')
 print('Please type a symbol from the above options to select ')
 choice = (input('the stock whose price you would like to predict: '))
-valid_choice = False
-while valid_choice == False:
-    if choice == 'SPY':
-        data = pd.read_csv('SPY.csv')
-        title = 'S&P 500 Close Price Over Time'
-        vaid_choice = True
-    elif choice == 'META':
-        data = pd.read_csv('META.csv')
-        title = 'META Close Price Over Time'
-        vaid_choice = True
-    elif choice == 'AMZN':
-        data = pd.read_csv('AMZN.csv')
-        title = 'AMZN Close Price Over Time'
-        vaid_choice = True
-    elif choice == 'AAPL':
-        data = pd.read_csv('AAPL.csv')
-        title = 'AAPL Close Price Over Time'
-        vaid_choice = True
-    elif choice == 'NFLX':
-        data = pd.read_csv('NFLX.csv')
-        title = 'NFLX Close Price Over Time'
-        vaid_choice = True
-    elif choice == 'GOOG':
-        data = pd.read_csv('GOOG.csv')
-        title = 'GOOG Close Price Over Time'
-        vaid_choice = True
-    else:
-        print('No dataset found for that symbol. Make sure each letter is capitalized!')
-        choice = (input('the stock whose price you would like to predict: '))
+if choice == 'SPY':
+    data = pd.read_csv('SPY.csv')
+    title = 'S&P 500 Close Price Over Time'
+    vaid_choice = True
+elif choice == 'META':
+    data = pd.read_csv('META.csv')
+    title = 'META Close Price Over Time'
+    vaid_choice = True
+elif choice == 'AMZN':
+    data = pd.read_csv('AMZN.csv')
+    title = 'AMZN Close Price Over Time'
+    vaid_choice = True
+elif choice == 'AAPL':
+    data = pd.read_csv('AAPL.csv')
+    title = 'AAPL Close Price Over Time'
+    vaid_choice = True
+elif choice == 'NFLX':
+    data = pd.read_csv('NFLX.csv')
+    title = 'NFLX Close Price Over Time'
+    vaid_choice = True
+elif choice == 'GOOG':
+    data = pd.read_csv('GOOG.csv')
+    title = 'GOOG Close Price Over Time'
+    vaid_choice = True
+else:
+    print('No dataset found for that symbol. Make sure each letter is capitalized!')
+    choice = (input('the stock whose price you would like to predict: '))
 num_epochs = int(input('Please type the number of epochs: '))
 print(data.shape) 
 
@@ -101,8 +99,8 @@ x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1], 1))
 #Gated Recurrent Neural Network - LSTM
 
 '''
-"lstm_model" refers to a vanilla long-short term memory model with a single layer 
-of hidden LSTM units, allowing this program to predict the behavior of the closing 
+"lstm_model" refers to a vanilla long-short term memory model with a single hidden layer 
+of LSTM units, allowing this program to predict the behavior of the closing 
 price based soley on historial values of the closing price. In other words, the vanilla 
 LSTM model could be applied to any time-series data, not just closing price.
 '''
