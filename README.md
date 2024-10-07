@@ -58,8 +58,8 @@ python stocksproject.py
 - Experiment with the number of epochs (you can do this through the command line!)
 
 ## Bugs
--**Data visualization**: Integrating the volume data with the stock price in matplotlib causes a extra empty window to appear in the initial visualization. I still haven't figured out if this is an issue with my code or with the library itself, but it's something to be aware of nonetheless.
--**Dataset selection**: The code will result in a runtime error if the user fails to select the correct stock symbol. It's a little silly but I haven't had the time to go in and fix it yet. 
+- **Data visualization**: Integrating the volume data with the stock price in matplotlib causes an extra empty window to appear in the initial visualization. I still haven't figured out if this is an issue with my code or with the library itself, but it's something to be aware of nonetheless.
+
 
 ## Notes
 
