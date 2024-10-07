@@ -57,10 +57,6 @@ python stocksproject.py
 - Adjust the LSTM model architecture by changing the number of units, layers, or adding dropout for potentially improved performance.
 - Experiment with the number of epochs (you can do this through the command line!)
 
-## Bugs
-- **Data visualization**: Integrating the volume data with the stock price in matplotlib causes an extra empty window to appear in the initial visualization. I still haven't figured out if this is an issue with my code or with the library itself, but it's something to be aware of nonetheless.
-
-
 ## Notes
 
 - This script uses a simple LSTM model and does not capture all factors affecting stock prices. In fact, this model is currently more of a line predictor than a stock predictor, since this would work the same way with any other bivariable dataset. Eventually a random forest and/or support vector machine will be implemented to include the correlation of stock volume and price in the final prediction. In the long run, natural language processing may be leveraged to further enhance the model by parsing financial articles. 
