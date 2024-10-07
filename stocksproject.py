@@ -10,41 +10,32 @@ from tensorflow import keras
 from datetime import datetime 
 
 #Dataset selection
-print('Symbols:\nSPY\nMETA\nAMZN\nAAPL\nNFLX\nGOOG\n')
-print('Please type a symbol from the above options to select ')
-choice = (input('the stock whose price you would like to predict: '))
-if choice == 'SPY':
-    data = pd.read_csv('SPY.csv')
-    title = 'S&P 500 Close Price Over Time'
-    vaid_choice = True
-elif choice == 'META':
-    data = pd.read_csv('META.csv')
-    title = 'META Close Price Over Time'
-    vaid_choice = True
-elif choice == 'AMZN':
-    data = pd.read_csv('AMZN.csv')
-    title = 'AMZN Close Price Over Time'
-    vaid_choice = True
-elif choice == 'AAPL':
-    data = pd.read_csv('AAPL.csv')
-    title = 'AAPL Close Price Over Time'
-    vaid_choice = True
-elif choice == 'NFLX':
-    data = pd.read_csv('NFLX.csv')
-    title = 'NFLX Close Price Over Time'
-    vaid_choice = True
-elif choice == 'GOOG':
-    data = pd.read_csv('GOOG.csv')
-    title = 'GOOG Close Price Over Time'
-    vaid_choice = True
+valid_choice = False
+while not valid_choice:
+    print('Symbols:\nSPY\nMETA\nAMZN\nAAPL\nNFLX\nGOOG\n')
+    print('Please type a symbol from the above options to select ')
+    choice = input('the stock whose price you would like to predict: ').upper()
+    
+    if choice in ['SPY', 'META', 'AMZN', 'AAPL', 'NFLX', 'GOOG']:
+        try:
+            data = pd.read_csv(f'{choice}.csv')
+            title = f'{choice} Close Price Over Time'
+            valid_choice = True
+        except FileNotFoundError:
+            print(f"Error: CSV file for {choice} not found. Please try again.")
+    else:
+        print('Invalid symbol. Please choose from the provided options.')
+
+# Continue with the rest of the code only if a valid choice was made
+if valid_choice:
+    num_epochs = int(input('Please type the number of epochs: '))
+    print(data.shape) 
+    print(data.sample(7)) 
+    data.info()
+    
+    # ... (rest of the code remains unchanged)
 else:
-    print('No dataset found for that symbol. Make sure each letter is capitalized!')
-
-num_epochs = int(input('Please type the number of epochs: '))
-print(data.shape) 
-
-print(data.sample(7)) 
-data.info()
+    print("No valid stock symbol was selected. Exiting the program.")
 
 #Visualize dataset
 data['Date'] = pd.to_datetime(data['Date'])
