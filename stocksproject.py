@@ -25,15 +25,13 @@ while not valid_choice:
             print(f"Error: CSV file for {choice} not found. Please try again.")
     else:
         print('Invalid symbol. Please choose from the provided options.')
-
-# Continue with the rest of the code only if a valid choice was made
+        
 if valid_choice:
     num_epochs = int(input('Please type the number of epochs: '))
     print(data.shape) 
     print(data.sample(7)) 
     data.info()
     
-    # ... (rest of the code remains unchanged)
 else:
     print("No valid stock symbol was selected. Exiting the program.")
 
@@ -49,19 +47,21 @@ volume = data['Volume']
 
 fig, ax1 = plt.subplots()
 
-plt.xlabel('Date') 
-plt.ylabel('Close Price in $')
-plt.plot(time,close)
-plt.grid()
-#plt.tick_params(axis=close)
+ax1.set_xlabel('Date')
+ax1.set_ylabel('Close Price in $')
+ax1.plot(data['Date'], data['Close'], label='Close Price')
+ax1.grid()
 
 ax2 = ax1.twinx()
-plt.ylabel('Volume in $100 Millions')
-plt.plot(time,volume,color='orange')
-plt.legend(labels=['Volume', 'Close'],loc=2)  
-#plt.tick_params(axis=volume)
+ax2.set_ylabel('Volume in Millions of Shares')
+ax2.plot(data['Date'], data['Volume'], color='orange', label='Volume')
 
-plt.title(title) 
+# Combine legends
+lines1, labels1 = ax1.get_legend_handles_labels()
+lines2, labels2 = ax2.get_legend_handles_labels()
+ax1.legend(lines1 + lines2, labels1 + labels2, loc='upper left')
+
+plt.title(title)
 fig.tight_layout()
 plt.show()
 
